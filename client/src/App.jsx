@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Video from "./pages/Video";
+import SignIn from "./pages/SignIn";
 
 const Container = styled.div`
   display: flex;
@@ -8,53 +12,34 @@ const Container = styled.div`
 
 const Main = styled.div`
   flex: 7;
-  background-color: ${({ theme }) => theme.bg};
+  background-color: #181818;
+  color: white;
 `;
 const Wrapper = styled.div`
   padding: 22px 96px;
+  //
 `;
 
 function App() {
   return (
     <Container>
-      <Menu />
-      <Main>
-        <Navbar />
-        <Wrapper>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-          <h1>Test</h1>
-        </Wrapper>
-      </Main>
+      <BrowserRouter>
+        {/* <Menu /> */}
+        <Main>
+          <Navbar />
+          <Wrapper>
+            <Routes>
+              <Route path="/">
+                <Route index element={<Home />} />
+                <Route path="signin" element={<SignIn />} />
+                <Route path="video">
+                  <Route path=":id" element={<Video />} />
+                </Route>
+              </Route>
+            </Routes>
+          </Wrapper>
+        </Main>
+      </BrowserRouter>
     </Container>
   );
 }

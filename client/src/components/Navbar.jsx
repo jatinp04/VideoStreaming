@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import SignIn from "../pages/SignIn";
 
 const Container = styled.div`
   position: sticky;
   top: 0;
   background-color: dark;
   height: 56px;
+  background-color: #181818;
 `;
 
 const Wrapper = styled.div`
@@ -77,12 +78,14 @@ const Navbar = () => {
       <Wrapper>
         <Search>
           <Input placeholder="Search" />
-          <SearchOutlinedIcon/>
+          <SearchOutlinedIcon />
         </Search>
+        <Link to="signin" style={{ textDecoration: "none" }}>
         <Button>
-                <AccountCircleOutlinedIcon />
-                SIGN IN
-              </Button>
+          <AccountCircleOutlinedIcon />
+          SIGN IN
+        </Button>
+        </Link>
       </Wrapper>
     </Container>
   );

@@ -37,10 +37,6 @@ const Item = styled.div`
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.soft};
-  }
 `;
 
 const Hr = styled.hr`
@@ -62,13 +58,6 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
-`;
-
-const Title = styled.h2`
-  font-size: 14px;
-  font-weight: 500;
-  color: #aaaaaa;
-  margin-bottom: 20px;
 `;
 
 const Menu = () => {
