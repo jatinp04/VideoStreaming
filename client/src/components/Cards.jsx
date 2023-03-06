@@ -1,8 +1,8 @@
-import React ,{useState,useEffect} from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { format} from "timeago.js"
-import axios from "axios"
+import {format} from "timeago.js";
 
 const Container = styled.div`
   width: 360px;
@@ -52,7 +52,7 @@ const Info = styled.div`
   color: white;
 `;
 
-const Cards = ({type,video}) => {
+const Cards = ({ type, video }) => {
   const [channel, setChannel] = useState({});
 
   useEffect(() => {
@@ -62,16 +62,19 @@ const Cards = ({type,video}) => {
     };
     fetchChannel();
   }, [video.userId]);
+  
   return (
-    <Link to="/video/test" style={{textDecoration:"none"}}>
+    <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image type={type} src={video.imgUrl}></Image>
+        <Image type={type} src={video.imgUrl} />
         <Details type={type}>
-          <ChannelImage type={type} src={channel.img}/>
+          {/* <ChannelImage type={type} src={channel.img} /> */}
           <Texts>
             <Title>{video.title}</Title>
-            <ChannelName>{channel.name}</ChannelName>
-            <Info>{video.views} views • {format(video.createdAt)}</Info>
+            {/* <ChannelName>{channel.name}</ChannelName> */}
+            <Info>
+              {video.views} views • {format(video.createdAt)}
+            </Info>
           </Texts>
         </Details>
       </Container>
